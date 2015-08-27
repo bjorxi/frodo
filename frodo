@@ -18,7 +18,12 @@ var $WORKING_DIR = process.cwd(),
     $ASSETS = os.path.join($APP, 'assets'),
     $CONTROLLERS = os.path.join($APP, 'controllers'),
     $MODELS = os.path.join($APP, 'models');
-    $VIEWS = os.path.join($APP, 'views');
+    $VIEWS = os.path.join($APP, 'views'),
+    $PREPROCESSORS = {
+      views: 'jade',
+      stylesheets: 'css',
+      javascripts: 'js'
+    };
 
 
 var skipViewsItems = ['assets', 'views', 'vendor', 'public'];
@@ -148,8 +153,8 @@ function generateController(name, methods) {
  * @param {String} name name of file as is.
  */
 function generateAssets(name) {
-  var js = os.path.join($ASSETS, 'javascripts', name+'.js'),
-      css = os.path.join($ASSETS, 'stylesheets', name+'.css');
+  var js = os.path.join($ASSETS, 'javascripts', name+'.'+$PREPROCESSORS.javascripts),
+      css = os.path.join($ASSETS, 'stylesheets', name+'.'+$PREPROCESSORS.stylesheets);
 
   createFile(js);
   createFile(css);
@@ -173,7 +178,7 @@ function generateViews(dirName, views) {
   }
 
   for (var i = 0; i < views.length; i++) {
-    view = views[i] + '.jade';
+    view = views[i]+'.'+$PREPROCESSORS.views;
     createFile(os.path.join(viewsPath, view));
   }
 }
