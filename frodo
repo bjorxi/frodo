@@ -62,8 +62,8 @@ var skeleton = {
   },
   tmp: {files: ['.keep']},
   vendor: {
-    javascripts: {files: ['application.js']},
-    stylesheets: {files: ['application.css']}
+    javascripts: {files: ['.keep']},
+    stylesheets: {files: ['.keep']}
   }
 };
 
