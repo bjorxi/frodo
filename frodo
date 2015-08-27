@@ -18,7 +18,12 @@ var $WORKING_DIR = process.cwd(),
     $ASSETS = os.path.join($APP, 'assets'),
     $CONTROLLERS = os.path.join($APP, 'controllers'),
     $MODELS = os.path.join($APP, 'models');
-    $VIEWS = os.path.join($APP, 'views');
+    $VIEWS = os.path.join($APP, 'views'),
+    $PREPROCESSORS = {
+      views: 'jade',
+      stylesheets: 'css',
+      javascripts: 'js'
+    };
 
 
 var skipViewsItems = ['assets', 'views', 'vendor', 'public'];
@@ -57,8 +62,8 @@ var skeleton = {
   },
   tmp: {files: ['.keep']},
   vendor: {
-    javascripts: {files: ['application.js']},
-    stylesheets: {files: ['application.css']}
+    javascripts: {files: ['.keep']},
+    stylesheets: {files: ['.keep']}
   }
 };
 
@@ -148,8 +153,8 @@ function generateController(name, methods) {
  * @param {String} name name of file as is.
  */
 function generateAssets(name) {
-  var js = os.path.join($ASSETS, 'javascripts', name+'.js'),
-      css = os.path.join($ASSETS, 'stylesheets', name+'.css');
+  var js = os.path.join($ASSETS, 'javascripts', name+'.'+$PREPROCESSORS.javascripts),
+      css = os.path.join($ASSETS, 'stylesheets', name+'.'+$PREPROCESSORS.stylesheets);
 
   createFile(js);
   createFile(css);
@@ -173,7 +178,7 @@ function generateViews(dirName, views) {
   }
 
   for (var i = 0; i < views.length; i++) {
-    view = views[i] + '.jade';
+    view = views[i]+'.'+$PREPROCESSORS.views;
     createFile(os.path.join(viewsPath, view));
   }
 }
@@ -196,12 +201,50 @@ function generateModel(name, props) {
 
 
 /**
+ * Use your favorite preprocessors with frodo generators. In order to configure preprocessors
+ * add module.exports.preprocessors into config/application. If preprocessors are not set frodo
+ * will use default values: jade for views, css for stylesheets, js for scripts. If any value is
+ * missed, frodo will use default for this as well.
+ *
+ * /!\ This settigns do not set your assets pipeline. Such a feature is on the roadmap. Don't forget
+ * to set preprocessing of your assets.
+ *
+ * Example ('config/application.js'):
+ *  module.exports.preprocessors = {
+ *    views: 'jade',
+ *    stylesheets: 'scss',
+ *    javascripts: 'coffee'
+ *  }
+ */
+function setPreprocessors() {
+  var preprocessors = require(os.path.join($WORKING_DIR, 'config/application')).preprocessors;
+
+  if (!preprocessors) {
+    return;
+  } else {
+    if (preprocessors.views) {
+      $PREPROCESSORS.views = preprocessors.views;
+    }
+
+    if (preprocessors.stylesheets) {
+      $PREPROCESSORS.stylesheets = preprocessors.stylesheets;
+    }
+
+    if (preprocessors.javascripts) {
+      $PREPROCESSORS.javascripts = preprocessors.javascripts;
+    }
+  }
+}
+
+/**
  * Parses command line arguments and if they are correct, call required action.
  *
  * @method main
  */
 function main() {
   var argv = process.argv;
+
+  setPreprocessors();
 
   if (argv.length === 2) {
     console.log('too few arguments');
