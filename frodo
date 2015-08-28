@@ -6,6 +6,7 @@
  */
 
 var fs = require('fs'),
+    exec = require('child_process').execSync,
     /* path is actively used, so I made Python like name */
     os = {path: require('path')},
     pluralize = require('./pluralize');
@@ -276,6 +277,8 @@ function main() {
       generateController(argv[4], ['index', 'show', 'create', 'new', 'edit', 'delete', ]);
       generateModel(argv[4], argv.slice(5));
     }
+  } else if (argv[2] === 'server') {
+    exec('node index.js', {stdio: 'inherit'});
   }
 }
 
