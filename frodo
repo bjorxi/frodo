@@ -218,7 +218,13 @@ function generateModel(name, props) {
  *  }
  */
 function setPreprocessors() {
-  var preprocessors = require(os.path.join($WORKING_DIR, 'config/application')).preprocessors;
+  var preprocessors = null;
+
+  try {
+    preprocessors = require(os.path.join($WORKING_DIR, 'config/application')).preprocessors;
+  } catch (e) {
+    console.log("Can't find config/application.js");
+  }
 
   if (!preprocessors) {
     return;
