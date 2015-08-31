@@ -73,9 +73,15 @@ var skeleton = {
 };
 
 
-function createFile(path) {
+function createFile(path, content) {
   console.log('Creating file', path);
-  fs.closeSync(fs.openSync(path, 'w'));
+
+  if (content) {
+    fs.writeFileSync(path, content);
+  } else {
+    file = fs.openSync(path, 'w');
+    fs.closeSync(file);
+  }
 }
 
 
