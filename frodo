@@ -5,6 +5,10 @@
  * Easily set structure in json file and pass path for the file as command line argument
  */
 
+String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}
+
 var fs = require('fs'),
     exec = require('child_process').execSync,
     /* path is actively used, so I made Python like name */
