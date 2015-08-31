@@ -34,6 +34,9 @@ var $WORKING_DIR = process.cwd(),
 var skipViewsItems = ['assets', 'views', 'vendor', 'public'];
 
 
+/**
+ * Project structure
+ */
 var skeleton = {
   files: ['index.js', '.gitignore'],
   app: {
@@ -57,6 +60,9 @@ var skeleton = {
   db: {files: ['.keep']},
   lib: {files: ['.keep']},
   log: {files: ['.keep']},
+  middleware: {
+    files: ['.keep']
+  }
   public: {
     files: ['404.jade', '500.jade', 'favicon.ico', 'robots.txt']
   },
