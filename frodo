@@ -194,6 +194,67 @@ function generateViews(dirName, views) {
   }
 }
 
+/**
+ *
+ */
+function defineMongooseType (type) {
+  switch (type) {
+    case 'string':
+      return 'String';
+    case 'number':
+      return 'Number';
+    case 'date':
+      return 'Date';
+    case 'timestamp':
+      return 'Number';
+    case 'bool':
+      return 'Boolean';
+    case 'buffer':
+      return 'Buffer';
+    case 'mixed':
+      return 'Mixed';
+    case 'object_id':
+      return 'ObjectId';
+    default:
+      return 'String';
+  }
+}
+
+
+/**
+ * name:type:required:default
+ */
+function createMongooseSchema(props) {
+  var schema = "";
+
+  props.forEach(function (val, i) {
+    splitted = val.split(':');
+    var name = splitted[0],
+        type = splitted[1],
+        required = splitted[2],
+        _default = splitted[3];
+
+    type = defineMongooseType(type);
+
+    schema += "  "+name+": {type: "+type;
+
+    if (required) {
+      schema += ", required: true";
+    }
+
+    if (_default) {
+      schema += ", default: "+_default; 
+    }
+
+    schema += "},\n";
+  });
+
+  schema += "  created_at: {type: Number, required: true, default: new Date().getTime()},\n";
+  schema += "  updated_at: {type: Number, required: true, default: new Date().getTime()}\n";
+
+  return schema;
+}
+
 
 /**
  * Generates a new model
@@ -207,7 +268,19 @@ function generateViews(dirName, views) {
  *
  */
 function generateModel(name, props) {
-  createFile(os.path.join($MODELS, name+'.js'));
+  var schema = createMongooseSchema(props),
+      nameCap = name.capitalize(),
+      schemaName = nameCap+"Schema";
+
+  var code = "var mongoose = require('mongoose'),\n"+
+    "    ObjectId = mongoose.Schema.Types.ObjectId;\n\n"+
+    "var "+schemaName+" = mongoose.Schema({\n"+
+    schema+
+    "});\n\n"+
+    "var "+nameCap+" = mongoose.model('"+nameCap+"', "+schemaName+");\n\n"+
+    "module.exports = "+nameCap+";\n";
+  console.log(code);
+  createFile(os.path.join($MODELS, name+'.js'), code);
 }
 
 
@@ -290,7 +363,7 @@ function main() {
     } else if (argv[3] === 'model') {
       generateModel(argv[4], argv.slice(5));
     } else if (argv[3] === 'scaffold') {
-      generateController(argv[4], ['index', 'show', 'create', 'new', 'edit', 'delete', ]);
+      generateController(argv[4], ['index', 'show', 'create', 'new', 'edit', 'delete']);
       generateModel(argv[4], argv.slice(5));
     }
   } else if (argv[2] === 'server') {
