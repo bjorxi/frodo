@@ -224,6 +224,10 @@ function generateViews(dirName, views) {
   }
 
   for (var i = 0; i < views.length; i++) {
+    if ($SCAFFOLD && ['create', 'update', 'delete'].indexOf(views[i]) >= 0 ) {
+      continue;
+    }
+
     view = views[i]+'.'+$PREPROCESSORS.views;
     createFile(os.path.join(viewsPath, view));
   }
