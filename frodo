@@ -1,8 +1,8 @@
 #! /usr/bin/env node
 
 /**
- * Frodo.js is a generator for Express aplications.
- * Easily set structure in json file and pass path for the file as command line argument
+ * Frodo.js is a app generator for Express-based aplications.
+ * Easily set structure in a json file and pass path for the file as command line argument
  */
 
 String.prototype.capitalize = function() {
@@ -64,7 +64,7 @@ var skeleton = {
   log: {files: ['.keep']},
   middleware: {
     files: ['.keep']
-  }
+  },
   public: {
     files: ['404.jade', '500.jade', 'favicon.ico', 'robots.txt']
   },
@@ -282,7 +282,7 @@ function createMongooseSchema(props) {
     }
 
     if (_default) {
-      schema += ", default: "+_default; 
+      schema += ", default: "+_default;
     }
 
     schema += "},\n";
@@ -402,8 +402,8 @@ function main() {
     } else if (argv[3] === 'model') {
       generateModel(argv[4], argv.slice(5));
     } else if (argv[3] === 'scaffold') {
-      generateController(argv[4], ['index', 'show', 'create', 'new', 'edit', 'delete']);
       $SCAFFOLD = true;
+      generateController(argv[4], ['index', 'show', 'new', 'edit', 'create', 'update', 'delete']);
       generateModel(argv[4], argv.slice(5));
     }
   } else if (argv[2] === 'server') {
