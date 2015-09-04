@@ -399,6 +399,7 @@ function main() {
       generateModel(argv[4], argv.slice(5));
     } else if (argv[3] === 'scaffold') {
       generateController(argv[4], ['index', 'show', 'create', 'new', 'edit', 'delete']);
+      $SCAFFOLD = true;
       generateModel(argv[4], argv.slice(5));
     }
   } else if (argv[2] === 'server') {
