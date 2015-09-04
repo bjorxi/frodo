@@ -19,11 +19,13 @@ var fs = require('fs'),
 var $WORKING_DIR = process.cwd(),
     $SKIP_VIEWS = false,
     $SKIP_ASSETS = false,
+    $SCAFFOLD = false,
     $APP = os.path.join($WORKING_DIR, 'app'),
     $ASSETS = os.path.join($APP, 'assets'),
     $CONTROLLERS = os.path.join($APP, 'controllers'),
     $MODELS = os.path.join($APP, 'models');
     $VIEWS = os.path.join($APP, 'views'),
+    $VERSION = 0.0.1,
     $PREPROCESSORS = {
       views: 'jade',
       stylesheets: 'css',
