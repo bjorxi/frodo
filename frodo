@@ -314,7 +314,7 @@ function generateModel(name, props) {
     "});\n\n"+
     "var "+nameCap+" = mongoose.model('"+nameCap+"', "+schemaName+");\n\n"+
     "module.exports = "+nameCap+";\n";
-  console.log(code);
+
   createFile(os.path.join($MODELS, name+'.js'), code);
 }
 
