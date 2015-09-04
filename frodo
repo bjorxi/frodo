@@ -138,6 +138,32 @@ function generateSkeleton(skeleton, path) {
 
 
 /**
+ *
+ */
+function getControllerContents (name, methods) {
+  var contents = '';
+
+  contents += 'var '+name.capitalize()+'Controller = (function () {\n';
+  contents += '  return {\n';
+
+  for (var i = 0; i < methods.length; i++) {
+    contents += '    '+methods[i]+': function (req, res) {}';
+
+    if (i != methods.length - 1) {
+      contents += ',\n';
+    } else {
+      contents += '\n';
+    }
+  }
+
+  contents += '  }\n';
+  contents += '}());\n\n';
+  contents += 'module.exports = '+name.capitalize()+'Controller;\n';
+  return contents;
+}
+
+
+/**
  * Generates a new controller. If $SKIP_VIEWS is false, generateViews will be executed.
  * Views folder name is first argument of the generateController function, views names the same as
  * methods.
@@ -150,9 +176,10 @@ function generateSkeleton(skeleton, path) {
  */
 function generateController(name, methods) {
   var name = pluralize(name),
-      fullName = name+'_controller.js';
+      fullName = name+'_controller.js',
+      contents = getControllerContents(name, methods);
 
-  createFile(os.path.join($CONTROLLERS, fullName));
+  createFile(os.path.join($CONTROLLERS, fullName), contents);
 
   if (!$SKIP_VIEWS && methods) {
     generateViews(name, methods);
