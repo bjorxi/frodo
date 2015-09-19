@@ -211,6 +211,7 @@ function generateAssets(name) {
  * Generates new views
  *
  * @method generateViews
+ *
  * @param {String} dirName a directory for new views
  * @param {Array} methods a list of views to be generated
  */
@@ -218,9 +219,9 @@ function generateViews(dirName, views) {
   var viewsPath = os.path.join($VIEWS, dirName),
       view = null;
 
-  /* If views directory does not exist - create it */
-  if (!fs.existsSync(viewsPath)) {
-    fs.mkdirSync(viewsPath);
+  /* If views directory does not exist - skip this step */
+  if (!fs.existsSync($VIEWS)) {
+    return;
   }
 
   for (var i = 0; i < views.length; i++) {
@@ -310,6 +311,11 @@ function generateModel(name, props) {
   var schema = createMongooseSchema(props),
       nameCap = name.capitalize(),
       schemaName = nameCap+"Schema";
+
+  /* If models directory does not exist - skip this step */
+  if (!fs.existsSync($MODELS)) {
+    return;
+  }
 
   var code = "var mongoose = require('mongoose'),\n"+
     "    ObjectId = mongoose.Schema.Types.ObjectId;\n\n"+
