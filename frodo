@@ -148,6 +148,23 @@ function generatePackageJson(projectPath, appName) {
 
   createFile(os.path.join(projectPath, 'package.json'), packageJson)
 }
+
+
+function npmInit(projectPath) {
+  /* Log blank line*/
+  console.log();
+  process.chdir(projectPath);
+  console.log('Running: npm install express --save');
+  exec('npm install express --save');
+  console.log('Running: npm install body-parser --save');
+  exec('npm install body-parser --save');
+  console.log('Running: npm install jade --save');
+  exec('npm install jade --save');
+  console.log('Running: npm install mongoose --save');
+  exec('npm install mongoose --save');
+}
+
+
 /**
  *
  */
