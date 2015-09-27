@@ -25,7 +25,7 @@ var $WORKING_DIR = process.cwd(),
     $CONTROLLERS = os.path.join($APP, 'controllers'),
     $MODELS = os.path.join($APP, 'models');
     $VIEWS = os.path.join($APP, 'views'),
-    $VERSION = '0.0.1',
+    $VERSION = '0.0.2',
     $PREPROCESSORS = {
       views: 'jade',
       stylesheets: 'css',
