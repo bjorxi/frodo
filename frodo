@@ -238,6 +238,7 @@ function generateViews(dirName, views) {
   }
 }
 
+
 /**
  *
  */
@@ -374,6 +375,7 @@ function setPreprocessors() {
     }
   }
 }
+
 
 /**
  * Parses command line arguments and if they are correct, call required action.
