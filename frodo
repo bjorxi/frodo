@@ -431,6 +431,8 @@ function main() {
       }
 
       generateSkeleton(skeleton, projectPath);
+      generatePackageJson(projectPath, argv[3]);
+      npmInit(projectPath);
     }
   } else if (argv[2] === 'generate') {
     if  (argv.length < 5) {
