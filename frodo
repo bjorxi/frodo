@@ -137,6 +137,17 @@ function generateSkeleton(skeleton, path) {
 }
 
 
+function generatePackageJson(projectPath, appName) {
+  packageJson = '{\n'+
+  '  "name": "'+appName+'",\n'+
+  '  "version": "0.0.1",\n'+
+  '  "description": "",\n'+
+  '  "main": "index.js",\n'+
+  '  "license": "ISC"\n'+
+  '}';
+
+  createFile(os.path.join(projectPath, 'package.json'), packageJson)
+}
 /**
  *
  */
