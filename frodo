@@ -162,6 +162,8 @@ function npmInit(projectPath) {
   exec('npm install jade --save');
   console.log('Running: npm install mongoose --save');
   exec('npm install mongoose --save');
+  console.log('Running: npm install async --save');
+  exec('npm install async --save');
 }
 
 
