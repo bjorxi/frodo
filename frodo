@@ -151,8 +151,7 @@ function generatePackageJson(projectPath, appName) {
 
 
 function npmInit(projectPath) {
-  /* Log blank line*/
-  console.log();
+  console.log('Installing depencies');
   process.chdir(projectPath);
   console.log('Running: npm install express --save');
   exec('npm install express --save');
