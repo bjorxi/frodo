@@ -415,6 +415,10 @@ function setPreprocessors() {
 function main() {
   var argv = process.argv;
 
+  if (!fs.existsSync($ASSETS)) {
+    $SKIP_ASSETS = true;
+  }
+
   setPreprocessors();
 
   if (argv.length === 2) {
