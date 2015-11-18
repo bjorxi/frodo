@@ -81,9 +81,27 @@ var skeleton = {
   }
 };
 
+/**
+ *
+ */
+function useTemplate(path, locals) {
+  var fileName = path.split($APPNAME).pop().replace('/', ''),
+      template = os.path.join(__dirname, 'templates', fileName);
+
+  if (fs.existsSync(template)) {
+    fs.createReadStream(template).pipe(fs.createWriteStream(path));
+    return true;
+  }
+}
+
 
 function createFile(path, content) {
   console.log('Creating file', path);
+  
+  if (useTemplate(path)) {
+    return;
+  }
+
 
   if (content) {
     fs.writeFileSync(path, content);
