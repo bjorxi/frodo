@@ -60,7 +60,7 @@ var skeleton = {
     environments: {files: ['development.js', 'test.js', 'production.js']},
     files: ['application.js', 'environment.js', 'database.js', 'routes.js']
   },
-  db: {files: ['.keep']},
+  db: {files: ['.keep', 'connection.js', 'util.js']},
   lib: {files: ['.keep']},
   log: {files: ['.keep']},
   middleware: {
