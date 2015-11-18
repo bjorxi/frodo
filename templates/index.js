@@ -1,6 +1,9 @@
 var app = require('./config/application');
 
 
+require('./db/connection');
+
+
 var server = app.listen(7000, function () {
   var host = server.address().address;
   var port = server.address().port;
