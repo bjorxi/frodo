@@ -17,6 +17,7 @@ var fs = require('fs'),
 
 
 var $WORKING_DIR = process.cwd(),
+    $APPNAME = null,
     $SKIP_VIEWS = false,
     $SKIP_ASSETS = false,
     $SCAFFOLD = false,
@@ -59,7 +60,7 @@ var skeleton = {
     environments: {files: ['development.js', 'test.js', 'production.js']},
     files: ['application.js', 'environment.js', 'database.js', 'routes.js']
   },
-  db: {files: ['.keep']},
+  db: {files: ['.keep', 'connection.js', 'util.js']},
   lib: {files: ['.keep']},
   log: {files: ['.keep']},
   middleware: {
@@ -80,9 +81,27 @@ var skeleton = {
   }
 };
 
+/**
+ *
+ */
+function useTemplate(path, locals) {
+  var fileName = path.split($APPNAME).pop().replace('/', ''),
+      template = os.path.join(__dirname, 'templates', fileName);
+
+  if (fs.existsSync(template)) {
+    fs.createReadStream(template).pipe(fs.createWriteStream(path));
+    return true;
+  }
+}
+
 
 function createFile(path, content) {
   console.log('Creating file', path);
+  
+  if (useTemplate(path)) {
+    return;
+  }
+
 
   if (content) {
     fs.writeFileSync(path, content);
@@ -428,6 +447,7 @@ function main() {
     if (argv.length === 3) {
       console.log('Usage: frodo new project_name. Example: frodo new blog');
     } else {
+      $APPNAME = argv[3];
       var projectPath = os.path.join($WORKING_DIR, argv[3]);
       fs.mkdirSync(projectPath);
 
@@ -440,6 +460,8 @@ function main() {
       npmInit(projectPath);
     }
   } else if (argv[2] === 'generate') {
+    $APPNAME = process.cwd().split('/').pop();
+
     if  (argv.length < 5) {
       console.log('Usage: frodo generate controller controller_name.'+
                   'Example: frodo generate controller users');
