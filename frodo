@@ -176,12 +176,15 @@ function npmInit(projectPath) {
   exec('npm install express --save');
   console.log('Running: npm install body-parser --save');
   exec('npm install body-parser --save');
-  console.log('Running: npm install jade --save');
-  exec('npm install jade --save');
   console.log('Running: npm install mongoose --save');
   exec('npm install mongoose --save');
   console.log('Running: npm install async --save');
   exec('npm install async --save');
+
+  if (!$SKIP_VIEWS) {
+    console.log('Running: npm install jade --save');
+    exec('npm install jade --save');  
+  }
 }
 
 
