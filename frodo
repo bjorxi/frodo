@@ -480,7 +480,12 @@ function main() {
       generateModel(argv[4], argv.slice(5));
     }
   } else if (argv[2] === 'server') {
-    exec('node index.js', {stdio: 'inherit'});
+    try {
+      exec('node index.js', {stdio: 'inherit'});
+    } catch (e) {
+      /* TODO: add logging */
+      return;
+    }
   }
 }
 
