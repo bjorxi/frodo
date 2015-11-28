@@ -375,7 +375,8 @@ function generateModel(name, props) {
   }
 
   var code = "var mongoose = require('mongoose'),\n"+
-    "    ObjectId = mongoose.Schema.Types.ObjectId;\n\n"+
+    "    ObjectId = mongoose.Schema.Types.ObjectId,\n"+
+    "    Mixed = Schema.Types.Mixed;\n\n"+
     "var "+schemaName+" = mongoose.Schema({\n"+
     schema+
     "});\n\n"+
