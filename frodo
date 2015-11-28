@@ -31,7 +31,8 @@ var $WORKING_DIR = process.cwd(),
       views: 'jade',
       stylesheets: 'css',
       javascripts: 'js'
-    };
+    },
+    $SCHEMA_TYPES = ['String', 'Number', 'Date', 'Buffer', 'Boolean', 'Mixed', 'Objectid', 'Array'];
 
 
 var skipViewsItems = ['assets', 'views', 'vendor', 'public'];
