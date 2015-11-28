@@ -306,6 +306,10 @@ function createMongooseSchema(props) {
         _default = splitted[3];
 
     type = defineMongooseType(type);
+    if ($SCHEMA_TYPES.indexOf(type.capitalize()) < 0) {
+      console.error('Unknown type', type, 'for', name);
+      process.exit(1);
+    }
 
     schema += "  "+name+": {type: "+type;
 
