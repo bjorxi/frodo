@@ -293,33 +293,6 @@ function generateViews(dirName, views) {
 
 
 /**
- *
- */
-function defineMongooseType (type) {
-  switch (type) {
-    case 'string':
-      return 'String';
-    case 'number':
-      return 'Number';
-    case 'date':
-      return 'Date';
-    case 'timestamp':
-      return 'Number';
-    case 'bool':
-      return 'Boolean';
-    case 'buffer':
-      return 'Buffer';
-    case 'mixed':
-      return 'Mixed';
-    case 'object_id':
-      return 'ObjectId';
-    default:
-      return 'String';
-  }
-}
-
-
-/**
  * name:type:required:default
  */
 function createMongooseSchema(props) {
