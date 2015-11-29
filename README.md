@@ -87,7 +87,7 @@ and creates corresponding the views.
 
 Generating a model:
 ```shell
-$ frodo generate model user name age
+$ frodo generate model user name age:number
 ```
 produces:
 ```javascript
