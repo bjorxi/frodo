@@ -94,11 +94,12 @@ $ frodo generate model user name age
 produces
 ```javascript
 var mongoose = require('mongoose'),
-    ObjectId = mongoose.Schema.Types.ObjectId;
+    ObjectId = mongoose.Schema.Types.ObjectId,
+    Mixed = Schema.Types.Mixed;
 
 var UserSchema = mongoose.Schema({
-  name: {type: String},
-  age: {type: String},
+  name: {type: String, required: true},
+  age: {type: Number, required: true},
   created_at: {type: Number, required: true, default: new Date().getTime()},
   updated_at: {type: Number, required: true, default: new Date().getTime()}
 });
