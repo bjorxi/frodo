@@ -305,15 +305,16 @@ function createMongooseSchema(props) {
         required = splitted[2],
         _default = splitted[3];
 
-    type = defineMongooseType(type);
     if ($SCHEMA_TYPES.indexOf(type.capitalize()) < 0) {
       console.error('Unknown type', type, 'for', name);
       process.exit(1);
     }
 
-    schema += "  "+name+": {type: "+type;
+    schema += "  "+name+": {type: "+type.capitalize();
 
-    if (required) {
+    if (required !== 'True' && splitted.length === 3) {
+      _default = required;
+    } else {
       schema += ", required: true";
     }
 
