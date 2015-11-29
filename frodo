@@ -98,7 +98,7 @@ function useTemplate(path, locals) {
 
 function createFile(path, content) {
   console.log('Creating file', path);
-  
+
   if (useTemplate(path)) {
     return;
   }
@@ -184,7 +184,7 @@ function npmInit(projectPath) {
 
   if (!$SKIP_VIEWS) {
     console.log('Running: npm install jade --save');
-    exec('npm install jade --save');  
+    exec('npm install jade --save');
   }
 }
 
