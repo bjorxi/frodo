@@ -305,6 +305,10 @@ function createMongooseSchema(props) {
         required = splitted[2],
         _default = splitted[3];
 
+    if (!type) {
+      type = 'String';
+    }
+
     if ($SCHEMA_TYPES.indexOf(type.capitalize()) < 0) {
       console.error('Unknown type', type, 'for', name);
       process.exit(1);
