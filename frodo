@@ -302,8 +302,7 @@ function createMongooseSchema(props) {
     splitted = val.split(':');
     var name = splitted[0],
         type = splitted[1],
-        required = splitted[2],
-        _default = splitted[3];
+        required = splitted[2];
 
     if (!type) {
       type = 'String';
@@ -316,14 +315,8 @@ function createMongooseSchema(props) {
 
     schema += "  "+name+": {type: "+type.capitalize();
 
-    if (required !== 'True' && splitted.length === 3) {
-      _default = required;
-    } else {
+    if (required === 'true') {
       schema += ", required: true";
-    }
-
-    if (_default) {
-      schema += ", default: "+_default;
     }
 
     schema += "},\n";
