@@ -310,6 +310,11 @@ function createMongooseSchema(props) {
         type = splitted[1],
         required = splitted[2];
 
+    if (splitted.length === 2 && type === 'true') {
+      type = null;
+      required = 'true';
+    }
+
     if (!type) {
       type = 'String';
     }
