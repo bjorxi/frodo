@@ -107,4 +107,21 @@ var User = mongoose.model('User', UserSchema);
 module.exports = User;
 ```
 
+Each property in a model generator may consist of 3 parts separated by a semicolon - 'name:type:required'
+```shell
+$ frodo generate model user email:string:true
+```
+where property name is email, type string, and it is required field. Type and required are not mandatory
+parts and can be ommited.
+
+Available types:
+  * String
+  * Number
+  * Date
+  * Buffer
+  * Boolean
+  * Mixed
+  * Objectid
+  * Array
+
 At the moment, Frodo supports only mongoose for defining models.
