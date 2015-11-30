@@ -293,7 +293,13 @@ function generateViews(dirName, views) {
 
 
 /**
- * name:type:required:default
+ * Generates mongoose compatible schema object.
+ *
+ * @method createMongooseSchema
+ *
+ * @param {Array} props - an array of model properties. Each item is a string 'name:type:required' 
+ *                        where only 'name' is required part. If type is omitted, then the default
+ *                        value (String) will be used.
  */
 function createMongooseSchema(props) {
   var schema = "";
@@ -364,6 +370,7 @@ function generateModel(name, props) {
 
 
 /**
+ * ------ THIS FEATURE NOT AVAILABLE --------
  * Use your favorite preprocessors with frodo generators. In order to configure preprocessors
  * add module.exports.preprocessors into config/application. If preprocessors are not set frodo
  * will use default values: jade for views, css for stylesheets, js for scripts. If any value is
