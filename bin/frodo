@@ -1,0 +1,3 @@
+#! /usr/bin/env node
+
+var frodo = require('../lib/index.js');
