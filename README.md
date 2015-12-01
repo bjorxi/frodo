@@ -13,18 +13,9 @@ framework, which helps you generate a structure for your app. An app generated w
 ## Documentation:
 
 #### Installation
-  * clone repository  
-  * add Frodo to the PATH environment variable
 
 ```shell
-$ cd /dicrecory/you/like
-$ git clone https://github.com/leemalmac/frodo.git
-```
-
-After the repository has been cloned, add the Frodo executable to the PATH. Personally, I prefer to make an alias into /usr/local/bin.
-
-```shell
-$ sudo ln -s /path/to/frodo/executable /usr/local/bin/frodo
+$ npm install -g frodo
 ```
 
 Done. Now you can easily invoke the Frodo command line tool.
