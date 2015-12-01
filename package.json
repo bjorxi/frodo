@@ -16,7 +16,7 @@
     "javascript",
     "rails"
   ],
-  "author": "Nodari Lipartiya",
+  "author": "Nodari Lipartiya <nodari.lipartiya@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/leemalmac/frodo/issues"
@@ -24,5 +24,8 @@
   "homepage": "https://github.com/leemalmac/frodo#readme",
   "dependencies": {
     "jade": "^1.11.0"
+  },
+  "bin": {
+    "frodo": "./bin/frodo"
   }
 }
