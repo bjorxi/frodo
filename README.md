@@ -15,7 +15,7 @@ framework, which helps you generate a structure for your app. An app generated w
 #### Installation
 
 ```shell
-$ npm install -g frodo
+$ npm install -g frodojs
 ```
 
 Done. Now you can easily invoke the Frodo command line tool.
