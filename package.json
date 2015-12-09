@@ -1,6 +1,6 @@
 {
   "name": "frodojs",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "description": "Frodo is a Rails-like app generator for Node and Express. It was created to simplify work with projects based on Express framework. Nowadays, many developers are familiar with Ruby on Rails framework, so app generated with Frodo will help you to kickstart faster.",
   "main": "frodo",
   "scripts": {
