@@ -1,4 +1,22 @@
 extends ../layouts/application.jade
 
 block content
-  h1 Welcome to the NodeJS world!
+  div.fluid_container
+    div.row
+      div.col-md-8.col-md-offset-2
+        h1.text-center Welcome to the NodeJS world!
+        section#intro
+          | This page has been automaticaly created by
+          a(href="https://www.npmjs.com/package/frodojs") frodojs
+          |. Frodo is a Rails-like app generator for
+          a(href="https://nodejs.org") Node
+          |  and
+          a(href="http://expressjs.com/") Express
+          | . It was created to simplify working with projects based on the Express framework.
+
+        section#docs
+          | First thing first - frodojs is not a framework, it is a tool to help you organize your
+          | Node apps similar to Rails (if you want it:)). Frodo uses Express as the framework,
+          | moreover it is pure Express withou any modifications, so you will be able to upgrage
+          | instantly. See available documentation on the
+          a(href="https://github.com/leemalmac/frodo") Github Page

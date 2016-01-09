@@ -1,0 +1,4 @@
+div#content {font-size: 16px;}
+
+section {margin-bottom: 20px;}
+section:last-child {margin-bottom: 0;}
