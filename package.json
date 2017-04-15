@@ -23,7 +23,8 @@
   },
   "homepage": "https://github.com/leemalmac/frodo#readme",
   "dependencies": {
-    "jade": "^1.11.0"
+    "jade": "^1.11.0",
+    "mustache": "^2.3.0"
   },
   "bin": {
     "frodo": "./bin/frodo"
