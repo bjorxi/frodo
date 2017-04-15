@@ -1,0 +1,8 @@
+
+module.exports = {
+  {{#methods}}
+  {{.}}: function (req, res) {
+    // your code goes here
+  },
+  {{/methods}}
+};
