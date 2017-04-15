@@ -4,7 +4,7 @@ var mongoose = require('mongoose'),
 
 var {{schemaName}} = mongoose.Schema({
   {{#props}}
-  {{name}}: {type: {{type}}}
+  {{name}}: {type: {{type}}},
   {{/props}}
   created_at: {type: Number, required: true, default: new Date().getTime()},
   updated_at: {type: Number, required: true, default: new Date().getTime()}
