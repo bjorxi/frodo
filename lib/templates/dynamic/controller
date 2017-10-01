@@ -1,7 +1,7 @@
 
 module.exports = {
   {{#methods}}
-  {{.}}: function (req, res) {
+  {{.}}: (req, res) => {
     // your code goes here
   },
   {{/methods}}
